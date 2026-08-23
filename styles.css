@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; background: radial-gradient(circle at 10% 0%, #fff9ed 0, transparent 35%), var(--cream); }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { cursor: pointer; }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; padding: 22px clamp(20px, 6vw, 92px); }
@@ -88,7 +88,7 @@ footer { text-align: center; color: var(--muted); font-size: 13px; margin: 35px;
 .auth h1 { font-size: 46px; }
 .field { display: grid; gap: 7px; margin: 15px 0; }
 .field label { font-size: 14px; font-weight: 700; }
-.field input { border: 1px solid var(--line); border-radius: 10px; padding: 13px; background: white; }
+.field input, .field select { border: 1px solid var(--line); border-radius: 10px; padding: 13px; background: white; }
 
 @media (max-width: 720px) {
   .hero { grid-template-columns: 1fr; }
