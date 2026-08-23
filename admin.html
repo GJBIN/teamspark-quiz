@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TeamSpark 管理后台</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">TEAM<span>SPARK</span></div>
+    <a href="index.html">← 返回学生端</a>
+  </header>
+
+  <main class="container">
+    <section id="auth" class="card auth">
+      <div class="eyebrow">Admin only</div>
+      <h1>管理后台</h1>
+      <p class="lede">输入管理口令查看实时统计。口令只用于本次验证，不会保存在浏览器中。</p>
+      <div class="field">
+        <label for="password">管理口令</label>
+        <input id="password" type="password" placeholder="请输入管理口令" autocomplete="current-password">
+      </div>
+      <button id="login" class="btn primary">进入后台</button>
+      <p id="auth-msg"></p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="admin-head">
+        <div>
+          <div class="eyebrow">Live overview</div>
+          <h1>答题数据。</h1>
+        </div>
+        <button id="logout" class="btn secondary">退出登录</button>
+      </div>
+
+      <div class="admin-grid">
+        <div class="metric"><small>答题人数</small><strong id="total">—</strong></div>
+        <div class="metric"><small>班级数量</small><strong id="classes">—</strong></div>
+        <div class="metric"><small>最高倾向</small><strong id="top-dept">—</strong></div>
+        <div class="metric"><small>最近提交</small><strong id="latest">—</strong></div>
+      </div>
+
+      <section class="card panel">
+        <h3>部门倾向</h3>
+        <div id="dept-bars"></div>
+      </section>
+
+      <section class="card panel">
+        <h3>班级分布</h3>
+        <div id="class-bars"></div>
+      </section>
+
+      <section class="card panel">
+        <div class="admin-head">
+          <h3>每题选项统计</h3>
+          <button id="export" class="btn primary">导出 CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table id="question-table" class="data-table"></table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
