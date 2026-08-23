@@ -169,6 +169,11 @@ $("#submit-result").addEventListener("click", async () => {
   });
 
   if (error) {
+    if (error.code === "23505") {
+      $("#submit-msg").textContent = "你已提交过，无需重复提交。";
+      button.disabled = true;
+      return;
+    }
     $("#submit-msg").textContent = `提交失败：${error.message}`;
     button.disabled = false;
     return;

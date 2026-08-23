@@ -174,6 +174,18 @@ create policy "Anyone can submit quiz responses"
 create index if not exists quiz_responses_class_name_idx on public.quiz_responses (class_name);
 create index if not exists quiz_responses_department_idx on public.quiz_responses (department_index);
 
+-- 同一姓名+班级只保留第一次提交（去重）
+-- 如果已有数据中存在重复，则创建该索引会失败。
+-- 请先在 SQL Editor 中执行下方清理语句（只执行一次）：
+-- delete from public.quiz_responses a
+-- using public.quiz_responses b
+-- where a.student_name = b.student_name
+--   and a.class_name = b.class_name
+--   and (a.created_at > b.created_at or (a.created_at = b.created_at and a.id > b.id));
+create unique index if not exists quiz_responses_name_class_unique_idx
+  on public.quiz_responses (student_name, class_name);
+
+
 -- 管理口令配置表
 create table if not exists public.admin_config (
   key text primary key,

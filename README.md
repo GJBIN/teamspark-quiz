@@ -54,6 +54,10 @@ set value = encode(extensions.digest('你的新口令', 'sha256'), 'hex')
 where key = 'password_hash';
 ```
 
+## 提交去重
+
+同一“姓名+班级”只记录第一次提交：数据库通过 `quiz_responses_name_class_unique_idx` 唯一索引去重，重复提交会提示“你已提交过”。若需关闭，删除该索引即可。
+
 ## 安全说明
 
 - 前端只使用题目给出的 Publishable key，不使用任何 `sb_secret` 或 service role key。
