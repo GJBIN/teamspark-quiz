@@ -119,23 +119,6 @@ function showResult() {
   $("#submit-msg").textContent = "";
 }
 
-function resetClassFields() {
-  $("#class-name").value = "";
-  $("#class-other").value = "";
-  $("#class-other").classList.add("hidden");
-}
-
-function selectedClassName() {
-  const classValue = $("#class-name").value;
-  if (classValue === "其他") return $("#class-other").value.trim();
-  return classValue;
-}
-
-$("#class-name").addEventListener("change", () => {
-  const isOther = $("#class-name").value === "其他";
-  $("#class-other").classList.toggle("hidden", !isOther);
-});
-
 $("#prev").addEventListener("click", () => {
   if (index > 0) {
     index -= 1;
@@ -158,14 +141,14 @@ $("#restart").addEventListener("click", () => {
   clearState();
   result = null;
   $("#student-name").value = "";
-  resetClassFields();
+  $("#class-name").value = "";
   renderQuiz();
 });
 
 $("#submit-result").addEventListener("click", async () => {
   if (!result) return;
   const name = $("#student-name").value.trim();
-  const className = selectedClassName();
+  const className = $("#class-name").value.trim();
 
   if (!name || !className) {
     $("#submit-msg").textContent = "请先填写姓名和班级。";
