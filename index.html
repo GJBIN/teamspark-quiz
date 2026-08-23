@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TeamSpark 趣味倾向测试</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">TEAM<span>SPARK</span></div>
+    <a href="admin.html">管理后台 →</a>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">A playful team quiz · 10 questions</div>
+        <h1>发现你的<br><em>有趣倾向。</em></h1>
+        <p class="lede">没有标准答案，只有更懂你的选择。花两分钟，看看你更适合点亮哪一个部门。</p>
+      </div>
+      <div class="doodle"><div class="big">✦<br>☻</div></div>
+    </section>
+
+    <section id="quiz" class="card">
+      <div class="progress-row">
+        <span>小测进行中</span>
+        <strong id="count">1 / 10</strong>
+      </div>
+      <div class="progress"><div id="progress" style="width:0%"></div></div>
+      <h2 id="question" class="question"></h2>
+      <div id="options" class="options"></div>
+      <div class="actions">
+        <button id="prev" class="btn secondary">← 上一题</button>
+        <button id="next" class="btn primary">下一题 →</button>
+      </div>
+    </section>
+
+    <section id="result" class="card result hidden">
+      <span id="result-badge" class="badge"></span>
+      <h2 id="result-title"></h2>
+      <p id="result-desc"></p>
+      <div id="score-breakdown" class="breakdown"></div>
+      <div class="notice">这是一份仅供参考的趣味倾向总结，不代表正式岗位测评或能力判断。</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="student-name">姓名</label>
+          <input id="student-name" placeholder="请输入你的姓名">
+        </div>
+        <div class="field">
+          <label for="class-name">班级</label>
+          <input id="class-name" placeholder="例如：高一（3）班">
+        </div>
+      </div>
+      <div class="actions">
+        <button id="restart" class="btn secondary">再测一次</button>
+        <button id="submit-result" class="btn primary">提交答卷</button>
+      </div>
+      <p id="submit-msg"></p>
+    </section>
+  </main>
+
+  <footer>你的选择只用于本次趣味活动的数据统计。</footer>
+  <script src="shared.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
